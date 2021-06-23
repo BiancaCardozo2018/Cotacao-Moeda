@@ -8,12 +8,14 @@ export default class Conversor extends Component {
 
         var today = new Date(),
 
-        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        date = today.getDate() + ' de ' + today.toLocaleString('default', { month: 'long' }) + ' ' + today.getFullYear(),
+        hour = today.getHours() + ':' + today.getMinutes();
 
         this.state = {
             moedaA_valor: "",
             moedaB_valor:0,
             completDate: date,
+            completHour: hour,
             taxaEstado_valor: "",
             selectedOption:"",
         }
@@ -68,11 +70,11 @@ export default class Conversor extends Component {
             let cotacao_round_sum_percent_taxaDinheiro = cotacao_arredondada + cotacao_arredondada_percent_taxaDinheiro
             let multiplicacao_moedaDigitada_cotacao = moedaA_sum_percent_taxaEstado * cotacao_arredondada;
             
-            if (this.state.selectedOption === "dinheiro") {
+            if (this.state.selectedOption === "Dinheiro") {
                 let moedaB_valor = (moedaA_sum_percent_taxaEstado * cotacao_round_sum_percent_taxaDinheiro).toFixed(2);
 
                 this.setState({moedaB_valor}); 
-            } else if (this.state.selectedOption === "cartao"){
+            } else if (this.state.selectedOption === "Cartão"){
 
                 let moedaB_valor =  parseFloat(multiplicacao_moedaDigitada_cotacao + percent_taxaCartao).toFixed(2);
 
@@ -89,17 +91,19 @@ export default class Conversor extends Component {
     render() {
         return (
             <div className="conversor">
-                <h2> {this.state.completDate} | R$ {this.state.cotacaoDiaria}</h2>
+                <h2> {this.state.completDate} | {this.state.completHour}</h2>
                 <h2>{this.props.moedaA} para {this.props.moedaB}</h2>
                 <input type="text" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
                 <input type="text" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
                 <h2>Tipo de Compra</h2>
                 <div>
-                    <p>Dinheiro</p><input type="radio" name="forma_pagamento" value="dinheiro" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
-                    <p>Cartão</p><input type="radio" name="forma_pagamento" value="cartao" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
+                    <p>Dinheiro</p><input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
+                    <p>Cartão</p><input type="radio" name="forma_pagamento" value="Cartão" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
                 </div>
                 <input type="button" id="btn_converter" value="Converter" onClick = {this.converter}></input>
-                <h2>{this.state.moedaB_valor}</h2>
+                <h2>R${this.state.moedaB_valor}</h2>
+                <h2> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}</h2>
+                <h2>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</h2>
             </div>
         );
     }
