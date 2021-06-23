@@ -6,14 +6,18 @@ export default class Conversor extends Component {
     constructor(props){
         super(props);
 
+        var today = new Date(),
+
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
         this.state = {
             moedaA_valor: "",
             moedaB_valor:0,
-            date:0,
-            cotacaoDiaria: 0,
+            completDate: date
         }
 
         this.converter = this.converter.bind(this);
+        
     }
 
     componentDidMount() {
@@ -34,9 +38,7 @@ export default class Conversor extends Component {
         })
         .then(json=>{
             let cotacao = json[0]['high'];
-            let date = json[0]['create_date'];
             let cotacaoDiaria = ( parseFloat(1) * cotacao).toFixed(2);
-            this.setState({date});
             this.setState({cotacaoDiaria});
         })
     }
@@ -61,7 +63,7 @@ export default class Conversor extends Component {
     render() {
         return (
             <div className="conversor">
-                <h2>{this.state.date} | R$ {this.state.cotacaoDiaria}</h2>
+                <h2> {this.state.completDate} | R$ {this.state.cotacaoDiaria}</h2>
                 <h2>{this.props.moedaA} para {this.props.moedaB}</h2>
                 <input type="text" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
                 <input type="button" id="btn_converter" value="Converter" onClick = {this.converter}></input>
