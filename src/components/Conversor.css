@@ -1,13 +1,17 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
-/* HEADER */
+.conversor{
+    background-image: url("././img/dolarTela.jpeg");
+    background-repeat: no-repeat;
+    background-position:right bottom;
+    background-size:100% 100%;
+}
 .header{
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 40px 40px 10px;
-
+    padding: 10px 10px 10px;
 }
 .logo{
     display: flex;
@@ -48,20 +52,16 @@
     background-color: #000;
 }
 .description{
-    margin-top: 5px;
+    margin-top: 2px;
     text-align: left;
     font-size: 14px;
     color: #8c9cad;
 }
-
-/* DADOS */
-
 .dados{
     width: 500px;
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
-
 }
 .dolar{
     display: flex;
@@ -91,9 +91,6 @@
     line-height: 24px;
     color: #8c9cad;
 }
-
-/* TIPO DE COMPRA */
-
 .tipo-compra{
     width: 100%;
     height: 150px;
@@ -114,31 +111,65 @@
 }
 .select input{
     margin-right: 10px;
-;
 }
-
 .botao{
     font-size: 16px;
     padding: 16px;
     color: #fff;
     background-color: #8c9cad;
-    border: solid 2px #008B57;
+    border: solid 2px #00AB63;
     border-radius: 8px;
+}
+.botao:hover{
+    background: #00AB63;
 }
 .botao i{
     margin-right: 10px;
 }
-
-/* CARD RESULTADO */
-
+.botao2{
+    font-size: 16px;
+    padding: 16px;
+    color: black;
+    border: solid 1px #dadbdd;
+    background-color: white;
+    border-radius: 8px;
+    margin-left: 50px;
+}
+.botao2 i{
+    margin-right: 10px;
+}
 .card-result{
-    margin: 20px 40px;
-    width: 400px;
-    color: #00a868;
-    text-align: center;
+position: static;
+width: 305px;
+height: 80px;
+left: 0px;
+top: 40px;
+font-family: Sharon Sans;
+font-size: 64px;
+line-height: 80px;
+display: flex;
+align-items: center;
+color: #00AB63;
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 8px 0px;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #00AB63;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid #00AB63;
 }

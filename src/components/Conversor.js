@@ -94,7 +94,7 @@ export default class Conversor extends Component {
             <div className="conversor">
                 <div className="header">
                     <div className="logo">
-                        <img src={logo} alt="Stone" />
+                        <img src={logo} alt="LogoStone" />
                     </div>
                     <div className="time">
                         <div className="titles">
@@ -129,12 +129,13 @@ export default class Conversor extends Component {
                     </div>
                     <button className="botao" type="button" id="btn_converter" value="Converter" onClick={this.converter}><i className="fas fa-exchange-alt"></i>Converter</button>
                 </div>
+                <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left"></i>Voltar</button>
                 <h2>O resultado do cálculo é:</h2>
                 <div className="card-result">
                     <h2>R${this.state.moedaB_valor}</h2>
                 </div>
-                <h2> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}</h2>
-                <h2>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</h2>
+                <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}</p>
+                <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
             </div>
         );
 
