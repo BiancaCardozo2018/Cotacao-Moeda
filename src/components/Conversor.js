@@ -92,13 +92,16 @@ export default class Conversor extends Component {
         return (
             <div className="conversor">
                 <h2> {this.state.completDate} | {this.state.completHour}</h2>
-                <h2>{this.props.moedaA} para {this.props.moedaB}</h2>
-                <input type="text" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
-                <input type="text" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
+                <div>
+                    <label ><b>Dólar</b></label>
+                    <input type="text" placeholder="$" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
+                    <label ><b>Taxa do Estado</b></label>
+                    <input type="text" placeholder="%" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
+                </div>
                 <h2>Tipo de Compra</h2>
                 <div>
-                    <p>Dinheiro</p><input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
-                    <p>Cartão</p><input type="radio" name="forma_pagamento" value="Cartão" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/>
+                <input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/><label ><b>Dinheiro</b></label>
+                <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/><label ><b>Cartão</b></label>
                 </div>
                 <input type="button" id="btn_converter" value="Converter" onClick = {this.converter}></input>
                 <h2>R${this.state.moedaB_valor}</h2>
@@ -106,5 +109,6 @@ export default class Conversor extends Component {
                 <h2>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</h2>
             </div>
         );
+        
     }
 } 
