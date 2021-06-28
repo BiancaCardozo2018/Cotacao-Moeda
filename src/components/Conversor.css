@@ -1,0 +1,53 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px 40px 10px;
+
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+.logo img{
+    width: 100%;
+    max-width: 150px;
+}
+.time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+.titles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.titles h2{
+    font-weight: 700;
+    color: #45505E;
+}
+.line{
+    margin: 0 20px;
+}
+.line::after{
+    width: 2px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    content: " ";
+    background-color: #000;
+}
+.description{
+    text-align: left;
+    font-size: 14px;
+    color: #8c9cad;
+}

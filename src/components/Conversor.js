@@ -90,7 +90,23 @@ export default class Conversor extends Component {
    
     render() {
         return (
+
             <div className="conversor">
+                <div className="header">
+                    <div className="logo">
+                        <img src="Importa o logo aqui" alt="" ></img>
+                    </div>
+                    <div className="time">
+                        <div className="title">
+                            <h4>{this.state.completDate}</h4>
+                            <span className="line"></span>
+                            <h4>{this.state.completHour}</h4>
+                        </div>
+                        <div className="description">
+                            <p>Dados de câmbio disponibilizados pela Morningstar.</p>
+                        </div>
+                    </div>
+                </div>
                 <h2> {this.state.completDate} | {this.state.completHour}</h2>
                 <div>
                     <label ><b>Dólar</b></label>
