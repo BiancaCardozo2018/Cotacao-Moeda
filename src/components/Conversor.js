@@ -19,10 +19,22 @@ export default class Conversor extends Component {
             completHour: hour,
             taxaEstado_valor: "",
             selectedOption: "",
+            mostrarComponente: false
         }
 
         this.converter = this.converter.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 
+    }
+
+    handleClick() {
+        this.setState({
+            mostrarComponente: true
+        });
+    }
+
+    goBack() {
+        window.history.go(-1);
     }
 
     componentDidMount() {
@@ -83,59 +95,98 @@ export default class Conversor extends Component {
 
                     this.setState({ moedaB_valor });
                 }
-
             })
-
-
     }
 
     render() {
         return (
             <div className="conversor">
-                <div className="header">
-                    <div className="logo">
-                        <img src={logo} alt="LogoStone" />
-                    </div>
-                    <div className="time">
-                        <div className="titles">
-                            <h4>{this.state.completDate}</h4>
-                            <span className="line"></span>
-                            <h4>{this.state.completHour}</h4>
+                <div className="conversao">
+                    <div className="header">
+                        <div className="logo">
+                            <img src={logo} alt="LogoStone" />
                         </div>
-                        <div className="description">
-                            <p>Dados de câmbio disponibilizados pela Morningstar.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="dados">
-                    <div className="dolar">
-                        <label >Dólar</label>
-                        <input type="number" min="1" max="999" placeholder="$" onChange={(event) => (this.setState({ moedaA_valor: event.target.value }))}></input>
-                    </div>
-                    <div className="tx-estado">
-                        <label >Taxa do Estado</label>
-                        <input type="number" min="1" max="999" placeholder="%" onChange={(event) => (this.setState({ taxaEstado_valor: event.target.value }))}></input>
-                    </div>
-                </div>
-                <div className="tipo-compra">
-                    <h4>Tipo de Compra</h4>
-                    <div className="select">
-                        <div className="dinheiro">
-                            <input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Dinheiro</label>
-                        </div>
-                        <div className="cartao">
-                            <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Cartão</label>
+                        <div className="time">
+                            <div className="titles">
+                                <h4>{this.state.completDate}</h4>
+                                <span className="line"></span>
+                                <h4>{this.state.completHour}</h4>
+                            </div>
+                            <div className="description">
+                                <p>Dados de câmbio disponibilizados pela Morningstar.</p>
+                            </div>
                         </div>
                     </div>
-                    <button className="botao" type="button" id="btn_converter" value="Converter" onClick={this.converter}><i className="fas fa-exchange-alt"></i>Converter</button>
+                    <div className="dados">
+                        <div className="dolar">
+                            <label >Dólar</label>
+                            <input type="number" min="1" max="999" placeholder="$" onChange={(event) => (this.setState({ moedaA_valor: event.target.value }))}></input>
+                        </div>
+                        <div className="tx-estado">
+                            <label >Taxa do Estado</label>
+                            <input type="number" min="1" max="999" placeholder="%" onChange={(event) => (this.setState({ taxaEstado_valor: event.target.value }))}></input>
+                        </div>
+                    </div>
+                    <div className="tipo-compra">
+                        <h4>Tipo de Compra</h4>
+                        <div className="select">
+                            <div className="dinheiro">
+                                <input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Dinheiro</label>
+                            </div>
+                            <div className="cartao">
+                                <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Cartão</label>
+                            </div>
+                        </div>
+                        <button className="botao" type="button" id="btn_converter" value="Converter" onClick={this.converter}><i className="fas fa-exchange-alt"></i>Converter</button>
+                    </div>
                 </div>
-                <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left"></i>Voltar</button>
-                <h2>O resultado do cálculo é:</h2>
-                <div className="card-result">
-                    <h2>R${this.state.moedaB_valor}</h2>
+
+                
+
+
+                <div>
+                {this.state.handleClick === 'false'? (
+                    <div>
+                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
+                        <h2>O resultado do cálculo é:</h2>
+                        <div className="card-result">
+                            <h2>R${this.state.moedaB_valor}</h2>
+                        </div>
+                        <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
+                        <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
+                    </div>
+                ) : (
+                    <div>
+                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
+                        <h2>O resultado do cálculo é:</h2>
+                        <div className="card-result">
+                            <h2>R${this.state.moedaB_valor}</h2>
+                        </div>
+                        <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
+                        <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
+                    </div>
+                )}
                 </div>
-                <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}</p>
-                <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
+
+
+
+
+
+
+
+
+
+
+
+                <div>
+                    <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
+                    <h2>O resultado do cálculo é:</h2>
+                    <div className="card-result">
+                        <h2>R${this.state.moedaB_valor}</h2>
+                    </div>
+                    <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
+                    <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
+                </div>
             </div>
         );
 
