@@ -1,27 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Conversor.css';
+import logo from './img/Stone_pagamentos.png';
 
 export default class Conversor extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         var today = new Date(),
 
-        date = today.getDate() + ' de ' + today.toLocaleString('default', { month: 'long' }) + ' ' + today.getFullYear(),
-        hour = today.getHours() + ':' + today.getMinutes();
+            date = today.getDate() + ' de ' + today.toLocaleString('default', { month: 'long' }) + ' ' + today.getFullYear(),
+            hour = today.getHours() + ':' + today.getMinutes();
 
         this.state = {
             moedaA_valor: "",
-            moedaB_valor:0,
+            moedaB_valor: 0,
             completDate: date,
             completHour: hour,
             taxaEstado_valor: "",
-            selectedOption:"",
+            selectedOption: "",
         }
 
         this.converter = this.converter.bind(this);
-        
+
     }
 
     componentDidMount() {
@@ -32,71 +33,71 @@ export default class Conversor extends Component {
         this.converter();
     }
 
-    cotacaoDiaria(){
+    cotacaoDiaria() {
         let de_para = `${this.props.moedaA}-${this.props.moedaB}`;
         let url = `https://economia.awesomeapi.com.br/${de_para}`;
 
         fetch(url)
-        .then(res => {
-            return res.json()
-        })
-        .then(json=>{
-            let cotacao = json[0]['high'];
-            let cotacaoDiaria = ( parseFloat(1) * cotacao).toFixed(2);
-            this.setState({cotacaoDiaria});
-        })
+            .then(res => {
+                return res.json()
+            })
+            .then(json => {
+                let cotacao = json[0]['high'];
+                let cotacaoDiaria = (parseFloat(1) * cotacao).toFixed(2);
+                this.setState({ cotacaoDiaria });
+            })
     }
 
-    converter(){
+    converter() {
 
         let de_para = `${this.props.moedaA}-${this.props.moedaB}`;
         let url = `https://economia.awesomeapi.com.br/${de_para}`;
-        
+
         fetch(url)
-        .then(res => {
-            return res.json()
-        })
-        .then(json=>{
-            let cotacao = json[0]['high'];
-            let cotacao_arredondada = (parseFloat(1) * cotacao).toFixed(2);
-            cotacao_arredondada = parseFloat(cotacao_arredondada)
+            .then(res => {
+                return res.json()
+            })
+            .then(json => {
+                let cotacao = json[0]['high'];
+                let cotacao_arredondada = (parseFloat(1) * cotacao).toFixed(2);
+                cotacao_arredondada = parseFloat(cotacao_arredondada)
 
-            let percent_taxaEstado = parseFloat(this.state.taxaEstado_valor)/100;
-            let percent_taxaDinheiro = 1.10/100;
-            let percent_taxaCartao = 6.4/100;
-            let moedaA_percent_taxaEstado = percent_taxaEstado * parseFloat(this.state.moedaA_valor)
-            let cotacao_arredondada_percent_taxaDinheiro = percent_taxaDinheiro * cotacao_arredondada
-            let moedaA_sum_percent_taxaEstado = moedaA_percent_taxaEstado + parseFloat(this.state.moedaA_valor)
-            let cotacao_round_sum_percent_taxaDinheiro = cotacao_arredondada + cotacao_arredondada_percent_taxaDinheiro
-            let multiplicacao_moedaDigitada_cotacao = moedaA_sum_percent_taxaEstado * cotacao_arredondada;
-            
-            if (this.state.selectedOption === "Dinheiro") {
-                let moedaB_valor = (moedaA_sum_percent_taxaEstado * cotacao_round_sum_percent_taxaDinheiro).toFixed(2);
+                let percent_taxaEstado = parseFloat(this.state.taxaEstado_valor) / 100;
+                let percent_taxaDinheiro = 1.10 / 100;
+                let percent_taxaCartao = 6.4 / 100;
+                let moedaA_percent_taxaEstado = percent_taxaEstado * parseFloat(this.state.moedaA_valor)
+                let cotacao_arredondada_percent_taxaDinheiro = percent_taxaDinheiro * cotacao_arredondada
+                let moedaA_sum_percent_taxaEstado = moedaA_percent_taxaEstado + parseFloat(this.state.moedaA_valor)
+                let cotacao_round_sum_percent_taxaDinheiro = cotacao_arredondada + cotacao_arredondada_percent_taxaDinheiro
+                let multiplicacao_moedaDigitada_cotacao = moedaA_sum_percent_taxaEstado * cotacao_arredondada;
 
-                this.setState({moedaB_valor}); 
-            } else if (this.state.selectedOption === "Cartão"){
+                if (this.state.selectedOption === "Dinheiro") {
+                    let moedaB_valor = (moedaA_sum_percent_taxaEstado * cotacao_round_sum_percent_taxaDinheiro).toFixed(2);
 
-                let moedaB_valor =  parseFloat(multiplicacao_moedaDigitada_cotacao + percent_taxaCartao).toFixed(2);
+                    this.setState({ moedaB_valor });
+                } else if (this.state.selectedOption === "Cartão") {
 
-                console.log(moedaB_valor);
+                    let moedaB_valor = parseFloat(multiplicacao_moedaDigitada_cotacao + percent_taxaCartao).toFixed(2);
 
-                this.setState({moedaB_valor});
-            }
+                    console.log(moedaB_valor);
 
-        })
-        
-       
+                    this.setState({ moedaB_valor });
+                }
+
+            })
+
+
     }
-   
+
     render() {
         return (
             <div className="conversor">
                 <div className="header">
                     <div className="logo">
-                        <img src="https://conta.stone.com.br/logo-stone.svg" alt="stone" ></img>
+                        <img src={logo} alt="Stone" />
                     </div>
                     <div className="time">
-                        <div className="title">
+                        <div className="titles">
                             <h4>{this.state.completDate}</h4>
                             <span className="line"></span>
                             <h4>{this.state.completHour}</h4>
@@ -106,24 +107,36 @@ export default class Conversor extends Component {
                         </div>
                     </div>
                 </div>
-                <h2> {this.state.completDate} | {this.state.completHour}</h2>
-                <div>
-                    <label ><b>Dólar</b></label>
-                    <input type="number" min="1" max="999" placeholder="$" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
-                    <label ><b>Taxa do Estado</b></label>
-                    <input type="number" min="1" max="999" placeholder="%" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
+                <div className="dados">
+                    <div className="dolar">
+                        <label >Dólar</label>
+                        <input type="number" min="1" max="999" placeholder="$" onChange={(event) => (this.setState({ moedaA_valor: event.target.value }))}></input>
+                    </div>
+                    <div className="tx-estado">
+                        <label >Taxa do Estado</label>
+                        <input type="number" min="1" max="999" placeholder="%" onChange={(event) => (this.setState({ taxaEstado_valor: event.target.value }))}></input>
+                    </div>
                 </div>
-                <h2>Tipo de Compra</h2>
-                <div>
-                <input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/><label ><b>Dinheiro</b></label>
-                <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event)=>(this.setState({selectedOption:event.target.value}))}/><label ><b>Cartão</b></label>
+                <div className="tipo-compra">
+                    <h4>Tipo de Compra</h4>
+                    <div className="select">
+                        <div className="dinheiro">
+                            <input type="radio" name="forma_pagamento" value="Dinheiro" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Dinheiro</label>
+                        </div>
+                        <div className="cartao">
+                            <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Cartão</label>
+                        </div>
+                    </div>
+                    <button className="botao" type="button" id="btn_converter" value="Converter" onClick={this.converter}><i className="fas fa-exchange-alt"></i>Converter</button>
                 </div>
-                <input type="button" id="btn_converter" value="Converter" onClick = {this.converter}></input>
-                <h2>R${this.state.moedaB_valor}</h2>
+                <h2>O resultado do cálculo é:</h2>
+                <div className="card-result">
+                    <h2>R${this.state.moedaB_valor}</h2>
+                </div>
                 <h2> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}</h2>
                 <h2>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</h2>
             </div>
         );
-        
+
     }
-} 
+}
