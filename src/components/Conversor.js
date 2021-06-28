@@ -90,11 +90,10 @@ export default class Conversor extends Component {
    
     render() {
         return (
-
             <div className="conversor">
                 <div className="header">
                     <div className="logo">
-                        <img src="Importa o logo aqui" alt="" ></img>
+                        <img src="https://conta.stone.com.br/logo-stone.svg" alt="stone" ></img>
                     </div>
                     <div className="time">
                         <div className="title">
@@ -110,9 +109,9 @@ export default class Conversor extends Component {
                 <h2> {this.state.completDate} | {this.state.completHour}</h2>
                 <div>
                     <label ><b>Dólar</b></label>
-                    <input type="text" placeholder="$" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
+                    <input type="number" min="1" max="999" placeholder="$" onChange={(event)=>(this.setState({moedaA_valor:event.target.value}))}></input>
                     <label ><b>Taxa do Estado</b></label>
-                    <input type="text" placeholder="%" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
+                    <input type="number" min="1" max="999" placeholder="%" onChange={(event)=>(this.setState({taxaEstado_valor:event.target.value}))}></input>
                 </div>
                 <h2>Tipo de Compra</h2>
                 <div>
