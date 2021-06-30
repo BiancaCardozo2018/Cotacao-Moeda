@@ -24,17 +24,13 @@ export default class Conversor extends Component {
 
         this.converter = this.converter.bind(this);
         this.handleClick = this.handleClick.bind(this);
-
     }
 
     handleClick() {
         this.setState({
-            mostrarComponente: true
+            mostrarComponente: !this.state.mostrarComponent,
         });
-    }
-
-    goBack() {
-        window.history.go(-1);
+        
     }
 
     componentDidMount() {
@@ -91,8 +87,6 @@ export default class Conversor extends Component {
 
                     let moedaB_valor = parseFloat(multiplicacao_moedaDigitada_cotacao + percent_taxaCartao).toFixed(2);
 
-                    console.log(moedaB_valor);
-
                     this.setState({ moedaB_valor });
                 }
             })
@@ -101,7 +95,8 @@ export default class Conversor extends Component {
     render() {
         return (
             <div className="conversor">
-                <div className="conversao">
+                {this.state.mostrarComponent === false ? (
+                <div className="firstScreen">
                     <div className="header">
                         <div className="logo">
                             <img src={logo} alt="LogoStone" />
@@ -137,27 +132,15 @@ export default class Conversor extends Component {
                                 <input type="radio" name="forma_pagamento" value="Cartão" onChange={(event) => (this.setState({ selectedOption: event.target.value }))} /><label >Cartão</label>
                             </div>
                         </div>
-                        <button className="botao" type="button" id="btn_converter" value="Converter" onClick={this.converter}><i className="fas fa-exchange-alt"></i>Converter</button>
+                        <button className="botao" type="button" id="btn_converter" value="Converter" onClick={() => {this.converter(); this.handleClick();}}><i className="fas fa-exchange-alt"></i>Converter</button>
                     </div>
                 </div>
 
-                
-
-
-                <div>
-                {this.state.handleClick === 'false'? (
-                    <div>
-                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
-                        <h2>O resultado do cálculo é:</h2>
-                        <div className="card-result">
-                            <h2>R${this.state.moedaB_valor}</h2>
-                        </div>
-                        <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
-                        <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
-                    </div>
                 ) : (
+               
+                <div className="secondScreen">
                     <div>
-                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
+                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left"></i>Voltar</button>
                         <h2>O resultado do cálculo é:</h2>
                         <div className="card-result">
                             <h2>R${this.state.moedaB_valor}</h2>
@@ -165,29 +148,11 @@ export default class Conversor extends Component {
                         <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
                         <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
                     </div>
+                </div>
+
                 )}
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                <div>
-                    <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left" onClick={this.goBack}></i>Voltar</button>
-                    <h2>O resultado do cálculo é:</h2>
-                    <div className="card-result">
-                        <h2>R${this.state.moedaB_valor}</h2>
-                    </div>
-                    <p> Compra no {this.state.selectedOption} e taxa de : {this.state.taxaEstado_valor}%</p>
-                    <p>Cotação do Dólar: $1 = R${this.state.cotacaoDiaria}</p>
-                </div>
             </div>
+
         );
 
     }
