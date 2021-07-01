@@ -28,7 +28,7 @@ export default class Conversor extends Component {
 
     handleClick() {
         this.setState({
-            mostrarComponente: !this.state.mostrarComponent,
+            mostrarComponente: !this.state.mostrarComponente,
         });
         
     }
@@ -95,7 +95,7 @@ export default class Conversor extends Component {
     render() {
         return (
             <div className="conversor">
-                {this.state.mostrarComponent === false ? (
+                {this.state.mostrarComponente === false ? (
                 <div className="firstScreen">
                     <div className="header">
                         <div className="logo">

@@ -1,15 +1,16 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 .conversor{
-    background-image: url("././img/dolarTela.jpeg");
-    background-repeat: no-repeat;
     display: block;
     width: 100vw;
     height: 100vh;
     padding: 0;
+    background: url("././img/dolarTela.jpeg") no-repeat bottom center scroll;
+    background-position: 30% 45%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+    -o-background-size: cover;
 }
 .header{
     width: 100%;
@@ -28,7 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
+    margin: 20px 40px;
+    margin-top: 40px;
 }
 .logo img{
     width: 100%;
@@ -39,7 +41,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
+    margin-top: 40px;
 }
 .titles{
     display: flex;
@@ -151,26 +153,18 @@
     background-color: white;
     border-radius: 8px;
     margin-left: 50px;
+    margin-bottom: 20px;
 }
 .botao2 i{
     margin-right: 10px;
 }
 .card-result{
-position: static;
-width: 305px;
-height: 80px;
-left: 0px;
-top: 40px;
-font-family: Sharon Sans;
-font-size: 64px;
-line-height: 80px;
-display: flex;
-align-items: center;
-color: #00AB63;
-flex: none;
-order: 1;
-flex-grow: 0;
-margin: 8px 0px;
+    margin-top: 20px;
+    color: #00AB63;
+}
+.secondScreen{
+    margin-top: 40px;
+    margin-left: 40px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
