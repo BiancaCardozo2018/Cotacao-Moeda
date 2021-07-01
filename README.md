@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Aplicação de Conversão de Moeda (Dólar para Real)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">Aplicação em React que faz a conversão do valor digitado de acordo com o valor do dólar atual.</p>
 
-## Available Scripts
+<img src="https://img.shields.io/static/v1?label=React&message=vs1.0&color=#61DAFB&style=for-the-badge&logo=react"/>
 
-In the project directory, you can run:
+<h4 align="center"> Status do Projeto : Finalizado</h4>
 
-### `npm start`
+### Pré-requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 🎲 Rodando o Back End (servidor)
 
-### `npm test`
+```bash
+# Clone este repositório
+$ git clone <https://github.com/BiancaCardozo2018/Cotacao-Moeda>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Acesse a pasta do projeto no terminal/cmd
+$ cd coracao-moeda
 
-### `npm run build`
+# Instale as dependências
+$ npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
+### 🛠 Tecnologias
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### `npm run eject`
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [Boostrap](https://getbootstrap.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [VSCode](https://code.visualstudio.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Autor
+---
+Feito por Bianca Lira cardozo 👋🏽 Entre em contato!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[![Linkedin Badge](https://img.shields.io/badge/-Bianca-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/bianca-cardozo/)](https://www.linkedin.com/in/bianca-cardozo/) 
+[![Gmail Badge](https://img.shields.io/badge/-bianca1999@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:bianca1999@gmail.com)](mailto:bianca1999@gmail.com)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
