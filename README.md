@@ -1,6 +1,6 @@
 # Aplicação de Conversão de Moeda (Dólar para Real)
 
-<p align="center">Aplicação em React que faz a conversão do valor digitado de acordo com o valor do dólar atual.</p>
+<p align="center">Aplicação em React que faz a conversão para real do valor digitado de acordo com o valor do dólar atual.</p>
 
 <h4 align="center"> Status do Projeto : Finalizado</h4>
 
@@ -8,7 +8,7 @@
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
 ### 🎲 Rodando o Back End (servidor)
 
@@ -38,7 +38,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [VSCode](https://code.visualstudio.com/)
 
 ### Autor
----
 Feito por Bianca Lira cardozo 👋🏽 Entre em contato!
 
 [![Linkedin Badge](https://img.shields.io/badge/-Bianca-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/bianca-cardozo/)](https://www.linkedin.com/in/bianca-cardozo/) 
