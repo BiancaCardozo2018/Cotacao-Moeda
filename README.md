@@ -2,8 +2,6 @@
 
 <p align="center">Aplicação em React que faz a conversão do valor digitado de acordo com o valor do dólar atual.</p>
 
-<img src="https://img.shields.io/static/v1?label=React&message=vs1.0&color=#61DAFB&style=for-the-badge&logo=react"/>
-
 <h4 align="center"> Status do Projeto : Finalizado</h4>
 
 ### Pré-requisitos
@@ -49,3 +47,5 @@ Feito por Bianca Lira cardozo 👋🏽 Entre em contato!
 ## License
 
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+
+<img src="https://img.shields.io/static/v1?label=React&message=vs1.0&color=#61DAFB&style=for-the-badge&logo=react"/>
