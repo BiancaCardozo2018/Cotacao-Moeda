@@ -140,7 +140,7 @@ export default class Conversor extends Component {
                
                 <div className="secondScreen">
                     <div>
-                        <button className="botao2" type="button" value="Voltar"><i className="fas fa-arrow-left"></i>Voltar</button>
+                        <button className="botao2" type="button" value="Voltar" onClick={this.handleClick}><i className="fas fa-arrow-left"></i>Voltar</button>
                         <h2>O resultado do cálculo é:</h2>
                         <div className="card-result">
                             <h2>R${this.state.moedaB_valor}</h2>
