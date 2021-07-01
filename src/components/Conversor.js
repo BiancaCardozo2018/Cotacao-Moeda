@@ -63,7 +63,11 @@ export default class Conversor extends Component {
 
         fetch(url)
             .then(res => {
-                return res.json()
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    <div>Estamos com problemas, por favor, tente novamente em alguns instantes.</div>
+                }
             })
             .then(json => {
                 let cotacao = json[0]['high'];
